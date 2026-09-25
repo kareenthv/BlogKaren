@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karen's Universe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=block" rel="stylesheet">
-    
     <style>
         :root {
-            --primary-pink: #F8DDEB;
-            --soft-pink: #F4C7D7;
-            --muted-pink: #E8B4C8;
-            --cream-light: #FFF4F7;
+            --pink-pastel: #F8DDEB;
+            --pink-soft: #F4C7D7;
+            --pink-muted: #E8B4C8;
+            --lavender: #E6D5F0;
+            --mint: #D5F0E8;
+            --peach: #F5E0D0;
+            --yellow-pastel: #FFF9D9;
             --cream: #FFF8EE;
             --beige: #E8D8C3;
-            --dusty-rose: #C89F9C;
+            --brown-soft: #C89F9C;
             --burgundy: #8F4F5F;
-            --warm-brown: #B88989;
-            --pastel-blue: #AFC6D8;
+            --blue-pastel: #AFC6D8;
             
-            --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08);
-            --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.1);
-            --shadow-delicate: 0 4px 12px rgba(139, 79, 95, 0.1);
+            --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -31,23 +29,68 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream) 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFF9F5 0%, #F5F0FF 50%, #F0F8F8 100%);
             color: #4a3d3d;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .bg-decoration {
+        /* NAVEGACIÓN */
+        nav {
             position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.15;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 248, 238, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 999;
+            box-shadow: var(--shadow-soft);
         }
 
+        nav a {
+            text-decoration: none;
+            color: var(--burgundy);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--pink-soft), var(--peach));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(248, 221, 235, 0.3);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION */
         .hero {
-            min-height: 100vh;
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -61,53 +104,56 @@
             text-align: center;
             position: relative;
             z-index: 2;
-            max-width: 600px;
+            max-width: 700px;
             animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: 3.5rem;
             color: var(--burgundy);
-            margin-bottom: 1rem;
-            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
             letter-spacing: -1px;
+            line-height: 1;
         }
 
         .hero-subtitle {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.5rem;
-            color: var(--dusty-rose);
-            margin-bottom: 2rem;
-            font-weight: 400;
+            font-size: 1.3rem;
+            color: var(--brown-soft);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
             letter-spacing: 1px;
         }
 
         .hero-tagline {
-            font-size: 1.1rem;
-            color: var(--warm-brown);
+            font-size: 1rem;
+            color: #6b5555;
             margin-bottom: 2.5rem;
             line-height: 1.8;
             font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-decor {
             position: absolute;
-            font-size: 3rem;
-            opacity: 0.6;
+            font-size: 2.5rem;
+            opacity: 0.4;
             animation: float 3s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        .decor-cat { top: 10%; left: 5%; animation-delay: 0s; }
-        .decor-coffee { top: 15%; right: 8%; animation-delay: 1s; font-size: 2.5rem; }
-        .decor-star { bottom: 20%; left: 8%; animation-delay: 0.5s; }
-        .decor-heart { bottom: 15%; right: 10%; animation-delay: 1.5s; color: var(--muted-pink); }
-        .decor-book { top: 30%; right: 5%; animation-delay: 0.8s; font-size: 2.2rem; }
-        .decor-music { bottom: 25%; left: 15%; animation-delay: 1.2s; }
+        .decor-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .decor-2 { top: 15%; right: 8%; animation-delay: 1s; }
+        .decor-3 { bottom: 20%; left: 10%; animation-delay: 0.5s; }
+        .decor-4 { bottom: 15%; right: 10%; animation-delay: 1.5s; }
+        .decor-5 { top: 30%; right: 5%; animation-delay: 0.8s; }
+        .decor-6 { bottom: 25%; left: 20%; animation-delay: 1.2s; }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
         @keyframes fadeInUp {
@@ -124,20 +170,20 @@
         .cta-button {
             display: inline-block;
             padding: 12px 32px;
-            background: var(--soft-pink);
+            background: linear-gradient(135deg, var(--pink-soft), var(--peach));
             color: var(--burgundy);
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            border: 2px solid var(--soft-pink);
+            border: none;
             cursor: pointer;
             box-shadow: var(--shadow-soft);
         }
 
         .cta-button:hover {
-            background: var(--burgundy);
+            background: linear-gradient(135deg, var(--burgundy), var(--brown-soft));
             color: var(--cream);
             transform: translateY(-2px);
             box-shadow: var(--shadow-med);
@@ -149,6 +195,7 @@
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
+            font-size: 1.5rem;
         }
 
         @keyframes bounce {
@@ -157,20 +204,21 @@
             60% { transform: translateX(-50%) translateY(-5px); }
         }
 
+        /* SECTIONS */
         section {
-            padding: 60px 2rem;
+            padding: 80px 2rem;
             position: relative;
             z-index: 1;
         }
 
         .section-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-size: 2.5rem;
             color: var(--burgundy);
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
             padding-bottom: 1.5rem;
+            font-weight: bold;
         }
 
         .section-title::after {
@@ -181,50 +229,41 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--soft-pink), transparent);
+            background: linear-gradient(90deg, var(--pink-soft), var(--peach), var(--lavender));
+            border-radius: 2px;
         }
 
+        /* THINGS I LOVE SECTION */
         .things-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .love-card {
-            background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 2rem;
             text-align: center;
             box-shadow: var(--shadow-soft);
             transition: all 0.4s ease;
-            border: 1px solid rgba(232, 212, 199, 0.3);
+            border: none;
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .love-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-pink), var(--pastel-blue));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
+        .love-card:nth-child(1) { background: linear-gradient(135deg, #FFF5F8, #FFE8F0); }
+        .love-card:nth-child(2) { background: linear-gradient(135deg, #FFF9F5, #F5E8E0); }
+        .love-card:nth-child(3) { background: linear-gradient(135deg, #F5F8FF, #E8F0FF); }
+        .love-card:nth-child(4) { background: linear-gradient(135deg, #F8FFF5, #E8FFE8); }
+        .love-card:nth-child(5) { background: linear-gradient(135deg, #FFF8F5, #F5F0FF); }
+        .love-card:nth-child(6) { background: linear-gradient(135deg, #F5F5F8, #E8E8FF); }
 
         .love-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-med);
-        }
-
-        .love-card:hover::before {
-            opacity: 0.05;
         }
 
         .love-card-icon {
@@ -234,28 +273,28 @@
         }
 
         .love-card h3 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.3rem;
             color: var(--burgundy);
             margin-bottom: 0.8rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .love-card p {
             font-size: 0.95rem;
             color: #6b5555;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
+        /* MUSIC SECTION */
         .music-section {
-            background: linear-gradient(135deg, rgba(248, 221, 235, 0.4), rgba(175, 198, 216, 0.2));
-            border-radius: 20px;
-            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(230, 213, 240, 0.3), rgba(213, 240, 232, 0.3));
+            border-radius: 30px;
+            padding: 80px 2rem;
         }
 
         .vinyl-player {
             max-width: 400px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 3rem;
             text-align: center;
         }
 
@@ -303,45 +342,48 @@
 
         .music-artists {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .artist-card {
             background: white;
             padding: 1.5rem;
-            border-radius: 12px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: var(--shadow-delicate);
+            box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
-            border: 1px solid rgba(200, 159, 156, 0.2);
+            border: 1px solid rgba(230, 213, 240, 0.3);
         }
 
         .artist-card:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-med);
         }
 
         .artist-card h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--burgundy);
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
             font-weight: 600;
         }
 
+        /* BOOKS SECTION */
         .books-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1.5rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .book {
-            background: linear-gradient(135deg, var(--muted-pink), var(--soft-pink));
-            border-radius: 8px;
-            padding: 1rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
             box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
@@ -349,40 +391,83 @@
             position: relative;
         }
 
+        .book:nth-child(1) { background: linear-gradient(135deg, var(--pink-soft), var(--pink-muted)); }
+        .book:nth-child(2) { background: linear-gradient(135deg, var(--lavender), #D9CCF0); }
+        .book:nth-child(3) { background: linear-gradient(135deg, #2a1a1a, #4a3a3a); color: #ddd; }
+        .book:nth-child(4) { background: linear-gradient(135deg, var(--mint), #B8E8E0); }
+        .book:nth-child(5) { background: linear-gradient(135deg, var(--peach), #E8D0C0); }
+        .book:nth-child(6) { background: linear-gradient(135deg, var(--yellow-pastel), #F5F0D9); }
+
         .book:hover {
-            transform: rotateY(5deg) translateY(-5px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-med);
         }
 
         .book h4 {
             font-size: 0.9rem;
-            color: #3a2a2a;
-            margin-top: 0.5rem;
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            color: inherit;
+            margin-top: 0.8rem;
+            font-weight: 600;
         }
 
-        .cat-cafe {
-            background: linear-gradient(135deg, rgba(255, 244, 247, 0.8), rgba(232, 221, 195, 0.4));
-            border-radius: 20px;
-            padding: 3rem 2rem;
+        .quote-box {
+            text-align: center;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            border-left: 4px solid var(--pink-soft);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            max-width: 700px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .quote-box:hover {
+            box-shadow: var(--shadow-med);
+            transform: translateX(5px);
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            color: var(--burgundy);
+            font-style: italic;
+            min-height: 50px;
+            line-height: 1.8;
+            transition: opacity 0.3s ease;
+        }
+
+        /* CAT SECTION */
+        .cat-section {
+            background: linear-gradient(135deg, rgba(255, 245, 248, 0.8), rgba(245, 248, 255, 0.8));
+            border-radius: 30px;
+            padding: 80px 2rem;
         }
 
         .cat-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cat-card {
             background: white;
-            border-radius: 16px;
-            overflow: hidden;
+            border-radius: 20px;
             box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
+
+        .cat-card:nth-child(1) { border-top: 4px solid var(--pink-soft); }
+        .cat-card:nth-child(2) { border-top: 4px solid var(--peach); }
+        .cat-card:nth-child(3) { border-top: 4px solid var(--blue-pastel); }
 
         .cat-card:hover {
             transform: translateY(-8px);
@@ -390,21 +475,24 @@
         }
 
         .cat-emoji {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
 
         .cat-card h4 {
             color: var(--burgundy);
             margin-bottom: 0.5rem;
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 600;
+            font-size: 1.2rem;
         }
 
         .cat-card p {
             font-size: 0.9rem;
             color: #6b5555;
+            line-height: 1.6;
         }
 
+        /* UNIVERSE SECTION */
         .universe-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -415,24 +503,24 @@
 
         .universe-item {
             background: white;
-            border-radius: 12px;
+            border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
-            box-shadow: var(--shadow-delicate);
+            box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
 
         .universe-item:hover {
-            border-color: var(--soft-pink);
+            border-color: var(--pink-soft);
             transform: scale(1.05);
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-med);
         }
 
         .universe-item span {
             font-size: 2.5rem;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .universe-item p {
@@ -441,60 +529,9 @@
             font-weight: 500;
         }
 
-        .easter-egg {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .easter-egg:hover {
-            transform: scale(1.1);
-        }
-
-        .easter-popup {
-            position: absolute;
-            background: var(--soft-pink);
-            color: var(--burgundy);
-            padding: 0.8rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            bottom: 120%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            box-shadow: var(--shadow-soft);
-            z-index: 100;
-        }
-
-        .easter-egg:hover .easter-popup {
-            opacity: 1;
-        }
-
-        .heart-trail {
-            position: fixed;
-            pointer-events: none;
-            font-size: 1.5rem;
-            z-index: 999;
-            animation: trailFade 1s ease-out forwards;
-        }
-
-        @keyframes trailFade {
-            from {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(-40px) scale(0.5);
-            }
-        }
-
+        /* FOOTER */
         footer {
-            background: linear-gradient(135deg, var(--soft-pink), var(--muted-pink));
+            background: linear-gradient(135deg, var(--pink-soft), var(--lavender));
             color: var(--burgundy);
             text-align: center;
             padding: 3rem 2rem;
@@ -504,17 +541,20 @@
         }
 
         footer p {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
             font-style: italic;
+            line-height: 1.6;
         }
 
         footer .footer-decor {
-            font-size: 1.5rem;
-            letter-spacing: 0.5rem;
+            font-size: 1.2rem;
+            letter-spacing: 1rem;
+            margin-top: 1.5rem;
+            opacity: 0.7;
         }
 
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -535,8 +575,8 @@
 
         .modal-content {
             background-color: var(--cream);
-            padding: 2rem;
-            border-radius: 16px;
+            padding: 2.5rem;
+            border-radius: 20px;
             max-width: 500px;
             width: 90%;
             box-shadow: var(--shadow-med);
@@ -546,7 +586,7 @@
         .modal-content h2 {
             color: var(--burgundy);
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
         }
 
         .modal-content p {
@@ -564,7 +604,7 @@
         }
 
         .close-modal:hover {
-            color: var(--muted-pink);
+            color: var(--pink-muted);
         }
 
         @keyframes slideIn {
@@ -583,51 +623,22 @@
             to { opacity: 1; }
         }
 
-        .quote-box {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 12px;
-            border-left: 4px solid var(--soft-pink);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .quote-box:hover {
-            box-shadow: var(--shadow-soft);
-            transform: translateX(5px);
-        }
-
-        .quote-text {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+        .heart-trail {
+            position: fixed;
+            pointer-events: none;
             font-size: 1.2rem;
-            color: var(--burgundy);
-            font-style: italic;
-            min-height: 40px;
-            line-height: 1.8;
+            z-index: 999;
+            animation: trailFade 1s ease-out forwards;
         }
 
-        @media (max-width: 768px) {
-            .hero-decor {
-                font-size: 2rem;
+        @keyframes trailFade {
+            from {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
-
-            .things-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .music-artists {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .vinyl {
-                width: 150px;
-                height: 150px;
-            }
-
-            section {
-                padding: 40px 1.5rem;
+            to {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.5);
             }
         }
 
@@ -635,129 +646,153 @@
             position: fixed;
             pointer-events: none;
             z-index: 998;
-            font-size: 1.5rem;
-            opacity: 0.6;
+            font-size: 1.3rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .things-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#amigos">Lo que amo</a>
+        <a href="#musica">Música</a>
+        <a href="#libros">Historias</a>
+        <a href="#gatos">Mis gatos</a>
+    </nav>
+
     <div id="cursor-cat"></div>
 
-    <section class="hero">
-        <div class="hero-decor decor-cat">🐱</div>
-        <div class="hero-decor decor-coffee">☕</div>
-        <div class="hero-decor decor-star">✨</div>
-        <div class="hero-decor decor-heart">💗</div>
-        <div class="hero-decor decor-book">📖</div>
-        <div class="hero-decor decor-music">♪</div>
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-decor decor-1">✨</div>
+        <div class="hero-decor decor-2">☕</div>
+        <div class="hero-decor decor-3">📚</div>
+        <div class="hero-decor decor-4">🎵</div>
+        <div class="hero-decor decor-5">♟️</div>
+        <div class="hero-decor decor-6">🌸</div>
 
         <div class="hero-content">
             <h1>Karen</h1>
-            <p class="hero-subtitle">pequeño universo</p>
+            <p class="hero-subtitle">pequeño universo personal</p>
             <p class="hero-tagline">
-                gatos, café, libros, música y cosas bonitas<br>
-                (con un toque de misterio)
+                En algún rincón entre las tazas de café, las páginas de libros con historias que me atrapan, la música que me entiende, y tres gatos que son mi razón de sonreír. Así es mi mundo.
             </p>
-            <button class="cta-button" onclick="smoothScroll('#things-i-love')">
-                Explorar mi mundo
+            <button class="cta-button" onclick="smoothScroll('#amigos')">
+                Conoce mi mundo
             </button>
         </div>
 
-        <div class="scroll-indicator">
-            <span style="font-size: 1.5rem;">↓</span>
-        </div>
+        <div class="scroll-indicator">↓</div>
     </section>
 
-    <section id="things-i-love">
+    <!-- THINGS I LOVE SECTION -->
+    <section id="amigos">
         <h2 class="section-title">Cosas que amo</h2>
         <div class="things-grid">
             <div class="love-card" onclick="openModal('gatos-modal')">
                 <div class="love-card-icon">🐱</div>
-                <h3>Gatitos</h3>
-                <p>Tengo 3 gatos y son mi razón de existir. Pañitas, orejas, ronroneos.</p>
+                <h3>Mis gatos</h3>
+                <p>Michi, Mitsu y Tsuru Udon son mi santuario. Cada uno con su propia personalidad, sus manías y su forma de quererme.</p>
             </div>
             <div class="love-card" onclick="openModal('cafe-modal')">
                 <div class="love-card-icon">☕</div>
-                <h3>Café</h3>
-                <p>La estética de una cafetería bonita es mi lugar feliz. Tazas, vapor, ambiente.</p>
+                <h3>Cafeterías</h3>
+                <p>Ese momento perfecto donde el café humeante, un libro abierto y la luz dorada crean la magia que necesito para pensar.</p>
             </div>
             <div class="love-card" onclick="openModal('ajedrez-modal')">
                 <div class="love-card-icon">♟️</div>
                 <h3>Ajedrez</h3>
-                <p>Estrategia, belleza en el movimiento. ♞ ♛ ♜ ♝</p>
+                <p>No es solo un juego. Es estrategia, es arte, es la vida misma en forma de 64 casillas. Cada movimiento cuenta.</p>
             </div>
             <div class="love-card" onclick="openModal('libros-modal')">
-                <div class="love-card-icon">📚</div>
-                <h3>Libros</h3>
-                <p>Historias que enganchen, personajes complejos, romance, psicología, mitología.</p>
+                <div class="love-card-icon">📖</div>
+                <h3>Historias</h3>
+                <p>Las que me atrapan el alma. Personajes complejos, amores que duelen, mitologías reinterpretadas, psicología del corazón.</p>
             </div>
             <div class="love-card" onclick="openModal('musica-modal')">
                 <div class="love-card-icon">🎵</div>
                 <h3>Música</h3>
-                <p>BTS, Harry Styles, Elvis, Michael Jackson, y misterio sonoro.</p>
+                <p>Mi lenguaje secreto. Lo que no puedo decir con palabras lo susurra en notas. BTS, Harry, Elvis, y ese misterio sonoro que me hipnotiza.</p>
             </div>
             <div class="love-card" onclick="openModal('anime-modal')">
-                <div class="love-card-icon">👹</div>
-                <h3>Anime & Series</h3>
-                <p>Arcane, Ghibli, Naruto. Personajes oscuros y complejos.</p>
+                <div class="love-card-icon">🎬</div>
+                <h3>Personajes oscuros</h3>
+                <p>Arcane. Ghibli. Naruto. Los que tienen grietas, los que son más que lo que se ve. Eso es lo que me fascina.</p>
             </div>
         </div>
     </section>
 
+    <!-- UNIVERSE SECTION -->
     <section>
         <h2 class="section-title">Mi pequeño universo</h2>
         <div class="universe-grid">
             <div class="universe-item">
                 <span>📖</span>
-                <p>Historias</p>
+                <p>Historias que enganchen</p>
             </div>
             <div class="universe-item">
                 <span>🎬</span>
-                <p>Cinematografía</p>
+                <p>Cinematografía visual</p>
             </div>
             <div class="universe-item">
                 <span>🎨</span>
-                <p>Estética</p>
+                <p>Estética de ensueño</p>
             </div>
             <div class="universe-item">
                 <span>💭</span>
-                <p>Conversaciones profundas</p>
+                <p>Charlas profundas</p>
             </div>
             <div class="universe-item">
                 <span>🌙</span>
-                <p>Cosas misteriosas</p>
+                <p>Lo misterioso y raro</p>
             </div>
             <div class="universe-item">
                 <span>🎭</span>
                 <p>Personajes complejos</p>
             </div>
-            <div class="universe-item">
-                <span>🌸</span>
-                <p>Cosas bonitas</p>
-            </div>
-            <div class="universe-item easter-egg" onclick="showEaster('egypt')">
-                <span>🏺</span>
-                <p>Mitología<span class="easter-popup">Ennead ✨</span></p>
-            </div>
-            <div class="universe-item">
-                <span>🖤</span>
-                <p>Cosas raras</p>
-            </div>
         </div>
     </section>
 
-    <section class="music-section">
+    <!-- MUSIC SECTION -->
+    <section class="music-section" id="musica">
         <h2 class="section-title">Rincón de música</h2>
         <div class="vinyl-player">
             <div class="vinyl"></div>
-            <p style="color: var(--burgundy); font-weight: 600; margin-bottom: 2rem;">Mi soundtrack de vida</p>
+            <p style="color: var(--burgundy); font-weight: 600; margin-bottom: 2rem;">Mi soundtrack</p>
         </div>
         
         <div class="music-artists">
-            <div class="artist-card easter-egg" onclick="showEaster('bts')">
+            <div class="artist-card">
                 <span style="font-size: 1.8rem;">🎤</span>
                 <h4>BTS</h4>
-                <span class="easter-popup">Taehyung 💜</span>
             </div>
             <div class="artist-card">
                 <span style="font-size: 1.8rem;">🎸</span>
@@ -779,34 +814,34 @@
                 <span style="font-size: 1.8rem;">🎵</span>
                 <h4>Paulo Londra</h4>
             </div>
-            <div class="artist-card easter-egg" onclick="showEaster('slipknot')">
+            <div class="artist-card">
                 <span style="font-size: 1.8rem;">🎭</span>
                 <h4>Slipknot</h4>
-                <span class="easter-popup">Lo raro que me encanta</span>
             </div>
             <div class="artist-card">
                 <span style="font-size: 1.8rem;">🎻</span>
-                <h4>Instrumental Mystery</h4>
+                <h4>Instrumental</h4>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2 class="section-title">Libros & Historias</h2>
+    <!-- BOOKS SECTION -->
+    <section id="libros">
+        <h2 class="section-title">Historias & Mitología</h2>
         <div class="books-container">
-            <div class="book easter-egg" onclick="showEaster('achilles')">
+            <div class="book" onclick="showEaster('achilles')">
                 <span style="font-size: 2rem;">📕</span>
-                <h4>La Canción de Aquiles<span class="easter-popup">Mi favorita 💕</span></h4>
+                <h4>La Canción de Aquiles</h4>
             </div>
-            <div class="book" style="background: linear-gradient(135deg, #D4A5A5, #E8C5C5);">
+            <div class="book">
                 <span style="font-size: 2rem;">📗</span>
                 <h4>Ennead</h4>
             </div>
-            <div class="book" style="background: linear-gradient(135deg, #2a1a1a, #4a3a3a); color: #ddd;">
+            <div class="book">
                 <span style="font-size: 2rem;">📕</span>
                 <h4>Berserk</h4>
             </div>
-            <div class="book" style="background: linear-gradient(135deg, #C8B4D4, #DCC9E0);">
+            <div class="book">
                 <span style="font-size: 2rem;">📘</span>
                 <h4>Mitología Egipcia</h4>
             </div>
@@ -814,106 +849,102 @@
                 <span style="font-size: 2rem;">📙</span>
                 <h4>BL & Romance</h4>
             </div>
-            <div class="book" style="background: linear-gradient(135deg, #E0D5B7, #F5E6C8);">
+            <div class="book">
                 <span style="font-size: 2rem;">📕</span>
-                <h4>Psicología</h4>
+                <h4>Psicología del alma</h4>
             </div>
         </div>
 
         <div class="quote-box" onclick="rotateQuote()">
-            <p class="quote-text" id="quote-display">"Los personajes complejos son los que permanecen en el corazón"</p>
+            <p class="quote-text" id="quote-display">"Un personaje complicado es un libro que nunca termino de leer"</p>
         </div>
     </section>
 
-    <section class="cat-cafe">
+    <!-- CAT SECTION -->
+    <section class="cat-section" id="gatos">
         <h2 class="section-title">Cat Café</h2>
         <p style="text-align: center; color: var(--burgundy); margin-bottom: 2rem; font-size: 1rem;">
-            Mi lugar favorito: gatos + café + luz suave
+            Mi lugar feliz: gatos + luz cálida + silencio perfecto
         </p>
         <div class="cat-grid">
             <div class="cat-card">
                 <div class="cat-emoji">🐱</div>
-                <h4>Gato 1</h4>
-                <p>Adorable y juguetón</p>
+                <h4>Michi</h4>
+                <p>Mi gato más bonito. Elegante, observador, siempre sabe qué necesito.</p>
             </div>
             <div class="cat-card">
                 <div class="cat-emoji">🐈</div>
-                <h4>Gato 2</h4>
-                <p>Cariñoso y curioso</p>
+                <h4>Mitsubishi (Mitsu)</h4>
+                <p>El travieso, el que me trae sorpresas a las 3 de la mañana. Mi caos favorito.</p>
             </div>
             <div class="cat-card">
                 <div class="cat-emoji">🐈‍⬛</div>
-                <h4>Gato 3</h4>
-                <p>Misterioso y elegante</p>
+                <h4>Tsuru Udon</h4>
+                <p>Mi raro precioso. Diferente, especial, el que nadie más entiende como yo.</p>
             </div>
         </div>
     </section>
 
-    <section style="position: relative;">
-        <h2 class="section-title">Secretos escondidos</h2>
-        <div style="text-align: center; color: var(--dusty-rose); margin: 2rem 0;">
-            <p>Intenta hacer click en elementos que se vean especiales...</p>
-            <p style="font-size: 0.9rem; margin-top: 1rem;">Hay easter eggs escondidos para Viktor, Obito, Ghibli y más</p>
-        </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer>
         <p>En algún lugar entre el café y los libros, el ajedrez y la música,</p>
-        <p>existe un pequeño universo que es completamente mío</p>
+        <p>existe un pequeño universo que es completamente, perfectamente mío.</p>
         <div class="footer-decor">
-            🐱 ☕ 📚 🎵 🌸
+            ☕ 📚 🎵 ♟️
         </div>
     </footer>
 
+    <!-- MODALS -->
     <div id="gatos-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('gatos-modal')">&times;</span>
-            <h2>Mis Gatitos</h2>
-            <p>Tengo 3 gatos que son la luz de mis ojos. Son mi compañía, mi inspiración, mi razón de sonreír en los días grises. Pueden estar en cualquier parte de esta página como pequeños recordatorios de cuánto los amo.</p>
+            <h2>Michi, Mitsu y Tsuru</h2>
+            <p>Son mi santuario. Cada uno tiene su propia magia: Michi con su elegancia silenciosa, Mitsu con su energía caótica, Tsuru con su rareza que solo yo entiendo. No sé qué haría sin ellos.</p>
         </div>
     </div>
 
     <div id="cafe-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('cafe-modal')">&times;</span>
-            <h2>☕ Café</h2>
-            <p>La estética de un café bonito es donde me encuentro a mí misma. Luz cálida, tazas de cerámica, el aroma del café, una mesa pequeña, libros abiertos. Es donde pienso, donde escribo, donde observo a otros vivir sus vidas.</p>
+            <h2>El ritual del café</h2>
+            <p>Es donde me encuentro. Esa mesa pequeña en la esquina, una taza cálida entre mis manos, un libro abierto. La luz cálida colándose por la ventana. Es ahí donde pienso, donde escritura, donde simplemente existo sin tener que explicar nada.</p>
         </div>
     </div>
 
     <div id="ajedrez-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('ajedrez-modal')">&times;</span>
-            <h2>♟️ Ajedrez</h2>
-            <p>El ajedrez es hermoso porque combina estrategia, arte y movimiento. No es solo un juego; es una metáfora de la vida. Cada pieza tiene su propósito, cada movimiento tiene consecuencias.</p>
+            <h2>El juego de la vida</h2>
+            <p>El ajedrez no es solo un juego para mí. Es estrategia, es arte en movimiento, es la vida misma comprimida en 64 casillas. Cada pieza tiene valor, cada movimiento tiene peso. Eso es hermoso.</p>
         </div>
     </div>
 
     <div id="libros-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('libros-modal')">&times;</span>
-            <h2>📚 Libros</h2>
-            <p>Los libros son puertas a otros mundos. Me encantan historias con personajes complejos, romance verdadero, psicología profunda, mitología reinterpretada. "La Canción de Aquiles" es especial porque captura algo que pocas historias logran: la profundidad de una conexión.</p>
+            <h2>Historias que atrapan el alma</h2>
+            <p>No me interesan historias simples. Quiero personajes rotos, amores que duelen de verdad, psicología del corazón humano. "La Canción de Aquiles" lo entiende. Ennead lo entiende. Son mis compañeros de insomnio.</p>
         </div>
     </div>
 
     <div id="musica-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('musica-modal')">&times;</span>
-            <h2>🎵 Música</h2>
-            <p>La música es la voz de mi alma. BTS porque me acompañó en momentos importantes. Harry Styles porque su arte es poesía. Música instrumental misteriosa porque a veces solo necesito suspenso en el silencio. La música es lo más importante.</p>
+            <h2>Mi lenguaje</h2>
+            <p>La música es la voz de lo que no puedo decir con palabras. BTS me acompañó en momentos que importan. Harry Styles es poesía. Hay un misterio sonoro en ciertos artistas que me hipnotiza. La música es lo más importante.</p>
         </div>
     </div>
 
     <div id="anime-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('anime-modal')">&times;</span>
-            <h2>👹 Anime & Series</h2>
-            <p>Me encantan historias que exploran la complejidad humana. Arcane porque cada personaje es más que blanco y negro. Ghibli por la belleza en lo mágico. Naruto por los personajes oscuros que al final resultan ser los más interesantes.</p>
+            <h2>Personajes que rompen esquemas</h2>
+            <p>Arcane porque cada personaje es gris, no hay blanco ni negro. Ghibli porque la belleza existe en lo mágico y lo roto. Naruto porque los personajes "villanos" resultan ser los más interesantes. Eso es lo que me fascina.</p>
         </div>
     </div>
 
     <script>
+        // MODALES
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('show');
         }
@@ -928,33 +959,30 @@
             }
         }
 
+        // SMOOTH SCROLL
         function smoothScroll(target) {
             document.querySelector(target).scrollIntoView({
                 behavior: 'smooth'
             });
         }
 
+        // EASTER EGGS
         function showEaster(type) {
-            const messages = {
-                'bts': '💜 Taehyung es mi bias. Hay algo en él que resuena conmigo.',
-                'egypt': '🏺 Mitología egipcia: historias de poder, deseo y conexión.',
-                'slipknot': '🎭 Lo raro es hermoso. Slipknot es mi lado más oscuro.',
-                'achilles': '💕 "La canción de Aquiles" es un libro que vive en mi corazón.'
-            };
-
-            if (messages[type]) {
-                alert(messages[type]);
+            if (type === 'achilles') {
+                alert('"La Canción de Aquiles" es el libro que vive en mi corazón. Patroclus y Aquiles me enseñaron qué es amar sin filtros.');
             }
         }
 
+        // CITAS ROTATIVAS
         const quotes = [
-            '"Los personajes complejos son los que permanecen en el corazón"',
-            '"Un café, un libro y silencio. Eso es felicidad"',
+            '"Un personaje complicado es un libro que nunca termino de leer"',
+            '"Un café, un libro y silencio. Eso es lo más cercano a la felicidad"',
             '"La música es la voz de lo que no puedo decir con palabras"',
-            '"Los gatos entienden las almas tranquilas"',
-            '"La mitología es la historia de quiénes somos realmente"',
-            '"En el ajedrez, como en la vida, hay belleza en la estrategia"',
-            '"Introvertida pero con un universo infinito adentro"'
+            '"Michi, Mitsu y Tsuru son mis razones para seguir"',
+            '"Introvertida, pero con un universo infinito adentro"',
+            '"Creo en los personajes rotos, en los amores que duelen, en las historias raras"',
+            '"El ajedrez es vida comprimida en 64 casillas"',
+            '"Ghibli entiende lo mágico. Arcane entiende lo gris. Naruto entiende lo complejo"'
         ];
 
         let currentQuoteIndex = 0;
@@ -969,6 +997,7 @@
             }, 150);
         }
 
+        // CORAZONES AL CLICKEAR
         document.addEventListener('click', function(e) {
             if (e.target.tagName !== 'A') {
                 createHeart(e.pageX, e.pageY);
@@ -986,9 +1015,10 @@
             setTimeout(() => heart.remove(), 1000);
         }
 
+        // GATITO QUE SIGUE EL CURSOR
         let lastX = 0, lastY = 0;
         const cursorCat = document.getElementById('cursor-cat');
-        const cats = ['🐱', '😸', '😻', '🐈'];
+        const cats = ['🐱', '😸', '😻'];
         let catIndex = 0;
 
         document.addEventListener('mousemove', function(e) {
@@ -1001,14 +1031,6 @@
                 lastY = e.clientY;
             }
         });
-
-        const quoteStyle = document.createElement('style');
-        quoteStyle.textContent = `
-            .quote-text {
-                transition: opacity 0.3s ease;
-            }
-        `;
-        document.head.appendChild(quoteStyle);
     </script>
 </body>
 </html>
