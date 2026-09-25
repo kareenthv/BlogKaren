@@ -39,7 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* Decorative elements - scattered throughout */
         .bg-decoration {
             position: fixed;
             pointer-events: none;
@@ -47,7 +46,6 @@
             opacity: 0.15;
         }
 
-        /* HERO SECTION */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -77,7 +75,7 @@
         }
 
         .hero-subtitle {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.5rem;
             color: var(--dusty-rose);
             margin-bottom: 2rem;
@@ -93,7 +91,6 @@
             font-style: italic;
         }
 
-        /* Decorative elements around hero */
         .hero-decor {
             position: absolute;
             font-size: 3rem;
@@ -124,7 +121,6 @@
             }
         }
 
-        /* CTA BUTTON */
         .cta-button {
             display: inline-block;
             padding: 12px 32px;
@@ -147,7 +143,6 @@
             box-shadow: var(--shadow-med);
         }
 
-        /* SCROLL INDICATOR */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -162,7 +157,6 @@
             60% { transform: translateX(-50%) translateY(-5px); }
         }
 
-        /* SECTIONS */
         section {
             padding: 60px 2rem;
             position: relative;
@@ -170,7 +164,7 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', Georgia, serif;
             font-size: clamp(2rem, 5vw, 2.8rem);
             color: var(--burgundy);
             text-align: center;
@@ -190,7 +184,6 @@
             background: linear-gradient(90deg, transparent, var(--soft-pink), transparent);
         }
 
-        /* THINGS I LOVE SECTION */
         .things-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -241,7 +234,7 @@
         }
 
         .love-card h3 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.3rem;
             color: var(--burgundy);
             margin-bottom: 0.8rem;
@@ -254,7 +247,6 @@
             line-height: 1.6;
         }
 
-        /* MUSIC CORNER */
         .music-section {
             background: linear-gradient(135deg, rgba(248, 221, 235, 0.4), rgba(175, 198, 216, 0.2));
             border-radius: 20px;
@@ -338,7 +330,6 @@
             font-weight: 600;
         }
 
-        /* BOOKS SECTION */
         .books-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -367,10 +358,9 @@
             font-size: 0.9rem;
             color: #3a2a2a;
             margin-top: 0.5rem;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
         }
 
-        /* CAT CAFE SECTION */
         .cat-cafe {
             background: linear-gradient(135deg, rgba(255, 244, 247, 0.8), rgba(232, 221, 195, 0.4));
             border-radius: 20px;
@@ -407,7 +397,7 @@
         .cat-card h4 {
             color: var(--burgundy);
             margin-bottom: 0.5rem;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
         }
 
         .cat-card p {
@@ -415,7 +405,6 @@
             color: #6b5555;
         }
 
-        /* MY LITTLE UNIVERSE SECTION */
         .universe-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -452,7 +441,6 @@
             font-weight: 500;
         }
 
-        /* EASTER EGGS */
         .easter-egg {
             position: relative;
             display: inline-block;
@@ -486,7 +474,6 @@
             opacity: 1;
         }
 
-        /* INTERACTIVE HEART TRAIL */
         .heart-trail {
             position: fixed;
             pointer-events: none;
@@ -506,7 +493,6 @@
             }
         }
 
-        /* FOOTER */
         footer {
             background: linear-gradient(135deg, var(--soft-pink), var(--muted-pink));
             color: var(--burgundy);
@@ -518,7 +504,7 @@
         }
 
         footer p {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.1rem;
             margin-bottom: 1rem;
             font-style: italic;
@@ -529,7 +515,6 @@
             letter-spacing: 0.5rem;
         }
 
-        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -561,7 +546,7 @@
         .modal-content h2 {
             color: var(--burgundy);
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', Georgia, serif;
         }
 
         .modal-content p {
@@ -598,7 +583,6 @@
             to { opacity: 1; }
         }
 
-        /* QUOTE ROTATION */
         .quote-box {
             text-align: center;
             margin: 2rem 0;
@@ -616,7 +600,7 @@
         }
 
         .quote-text {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.2rem;
             color: var(--burgundy);
             font-style: italic;
@@ -624,7 +608,6 @@
             line-height: 1.8;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero-decor {
                 font-size: 2rem;
@@ -648,7 +631,6 @@
             }
         }
 
-        /* CUTE CURSOR TRAIL - hidden cats that follow */
         #cursor-cat {
             position: fixed;
             pointer-events: none;
@@ -659,10 +641,8 @@
     </style>
 </head>
 <body>
-    <!-- Hidden cursor cat element -->
     <div id="cursor-cat"></div>
 
-    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-decor decor-cat">🐱</div>
         <div class="hero-decor decor-coffee">☕</div>
@@ -688,7 +668,6 @@
         </div>
     </section>
 
-    <!-- THINGS I LOVE SECTION -->
     <section id="things-i-love">
         <h2 class="section-title">Cosas que amo</h2>
         <div class="things-grid">
@@ -725,7 +704,6 @@
         </div>
     </section>
 
-    <!-- MY LITTLE UNIVERSE SECTION -->
     <section>
         <h2 class="section-title">Mi pequeño universo</h2>
         <div class="universe-grid">
@@ -768,7 +746,6 @@
         </div>
     </section>
 
-    <!-- MUSIC CORNER -->
     <section class="music-section">
         <h2 class="section-title">Rincón de música</h2>
         <div class="vinyl-player">
@@ -814,7 +791,6 @@
         </div>
     </section>
 
-    <!-- BOOKS & STORIES SECTION -->
     <section>
         <h2 class="section-title">Libros & Historias</h2>
         <div class="books-container">
@@ -849,7 +825,6 @@
         </div>
     </section>
 
-    <!-- CAT CAFE SECTION -->
     <section class="cat-cafe">
         <h2 class="section-title">Cat Café</h2>
         <p style="text-align: center; color: var(--burgundy); margin-bottom: 2rem; font-size: 1rem;">
@@ -874,16 +849,14 @@
         </div>
     </section>
 
-    <!-- EASTER EGGS SECTION (Hidden) -->
     <section style="position: relative;">
         <h2 class="section-title">Secretos escondidos</h2>
         <div style="text-align: center; color: var(--dusty-rose); margin: 2rem 0;">
             <p>Intenta hacer click en elementos que se vean especiales...</p>
-            <p style="font-size: 0.9rem; margin-top: 1rem;">Hay easter eggs escondidos para Viktor 🧿, Obito 🍂, Ghibli 🌸 y más</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">Hay easter eggs escondidos para Viktor, Obito, Ghibli y más</p>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <p>En algún lugar entre el café y los libros, el ajedrez y la música,</p>
         <p>existe un pequeño universo que es completamente mío</p>
@@ -892,7 +865,6 @@
         </div>
     </footer>
 
-    <!-- MODALS -->
     <div id="gatos-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('gatos-modal')">&times;</span>
@@ -942,7 +914,6 @@
     </div>
 
     <script>
-        // MODAL FUNCTIONS
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('show');
         }
@@ -957,14 +928,12 @@
             }
         }
 
-        // SMOOTH SCROLL
         function smoothScroll(target) {
             document.querySelector(target).scrollIntoView({
                 behavior: 'smooth'
             });
         }
 
-        // EASTER EGGS
         function showEaster(type) {
             const messages = {
                 'bts': '💜 Taehyung es mi bias. Hay algo en él que resuena conmigo.',
@@ -978,7 +947,6 @@
             }
         }
 
-        // QUOTES ROTATION
         const quotes = [
             '"Los personajes complejos son los que permanecen en el corazón"',
             '"Un café, un libro y silencio. Eso es felicidad"',
@@ -1001,7 +969,6 @@
             }, 150);
         }
 
-        // HEART TRAIL ON CLICK
         document.addEventListener('click', function(e) {
             if (e.target.tagName !== 'A') {
                 createHeart(e.pageX, e.pageY);
@@ -1019,7 +986,6 @@
             setTimeout(() => heart.remove(), 1000);
         }
 
-        // SUBTLE CAT CURSOR TRAIL (optional - every 30px)
         let lastX = 0, lastY = 0;
         const cursorCat = document.getElementById('cursor-cat');
         const cats = ['🐱', '😸', '😻', '🐈'];
@@ -1036,35 +1002,6 @@
             }
         });
 
-        // SMOOTH ANIMATIONS ON SCROLL
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.love-card, .universe-item, .artist-card, .book, .cat-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Add fade-in animation for initial load
-        const style = document.createElement('style');
-        style.textContent = `
-            .love-card, .universe-item, .artist-card, .book, .cat-card {
-                opacity: 0;
-                animation: fadeInUp 0.6s ease-out forwards;
-            }
-        `;
-        document.head.appendChild(style);
-
-        // QUOTE TRANSITION CSS
         const quoteStyle = document.createElement('style');
         quoteStyle.textContent = `
             .quote-text {
