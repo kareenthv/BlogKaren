@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: "Mi primera publicación en el blog"
 pubDate: 2026-09-25
 description: "Lo que pienso de Astro después de terminar el tutorial: me encantó."
@@ -9,15 +10,11 @@ image:
 tags: ["astro", "bloguear", "aprender en público"]
 ---
 
-# Mi primera publicación en el blog
-
-Publicado el: 2026-09-25
-
-La neta quiero hablar con mis propias palabras de lo que me pareció Astro, porque de verdad me encantó.
+¡Bienvenido a mi nuevo blog sobre el aprendizaje de Astro! Aquí voy a compartir mi viaje de aprendizaje a medida que construyo un nuevo sitio web.
 
 ## Lo que pienso de Astro
 
-Astro me pareció muy chido. En general me gustó muchísimo porque es súper intuitivo, y el tutorial todo que verrrtzzz. La neta me encantó este pedo, de verdad prof, me devolvio mi inspiracion programadora. neta gracias por esto y por todo.
+Astro me pareció muy chido. En general me gustó muchísimo porque es súper intuitivo, y el tutorial está de verdad. La neta me encantó este pedo, de verdad me devolvió mi inspiración programadora.
 
 Lo que más amo es que te explican como si fueras un niño de 5 años. Yo tengo pendejismo agudo y me encanta que me expliquen paso por paso, eso es lo mejor del mundo.
 
@@ -29,4 +26,4 @@ Lo que más amo es que te explican como si fueras un niño de 5 años. Yo tengo 
 
 ## Próximos pasos
 
-Voy a terminar el tutorial y seguir subiendo más publicaciones aquí xd. Siga al pendiente porque viene más.
+Voy a terminar el tutorial y seguir subiendo más publicaciones aquí. Siga al pendiente porque viene más.

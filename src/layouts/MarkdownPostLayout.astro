@@ -1,0 +1,130 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const { frontmatter } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{frontmatter.title}</title>
+    <style>
+        :root {
+            --burgundy: #8F4F5F;
+            --brown-soft: #C89F9C;
+            --pink-soft: #F4C7D7;
+            --peach: #F5E0D0;
+            --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--pink-soft);
+            color: var(--brown-soft);
+            font-size: 0.95rem;
+        }
+
+        .post-meta p {
+            margin: 0;
+        }
+
+        .post-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-soft);
+        }
+
+        :global(main > p) {
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            color: #4a3d3d;
+        }
+
+        :global(main > h2) {
+            color: var(--burgundy);
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        :global(main > h3) {
+            color: var(--brown-soft);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        :global(main > ul),
+        :global(main > ol) {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        :global(main > li) {
+            margin-bottom: 0.5rem;
+            color: #4a3d3d;
+        }
+
+        :global(main > blockquote) {
+            border-left: 4px solid var(--pink-soft);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            color: var(--brown-soft);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <Header />
+
+    <main>
+        <h1>{frontmatter.title}</h1>
+        
+        <div class="post-meta">
+            <p>Publicado: {frontmatter.pubDate.toString().slice(0,10)}</p>
+            <p>Por: {frontmatter.author}</p>
+        </div>
+
+        {frontmatter.image && (
+            <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="post-image" width="600" />
+        )}
+
+        {frontmatter.description && (
+            <p style="font-style: italic; color: var(--brown-soft); margin-bottom: 2rem;">
+                {frontmatter.description}
+            </p>
+        )}
+
+        <slot />
+    </main>
+
+    <Footer />
+    <script>
+        import "../scripts/menu.js";
+    </script>
+</body>
+</html>
