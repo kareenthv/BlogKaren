@@ -115,14 +115,6 @@ html.dark {
   color: #f4c7d7;
 }
 
-.dark a:hover {
-  color: #fff;
-}
-
-.dark white {
-  background: #1a1050;
-}
-
 .dark .post-card,
 .dark .card,
 .dark .facts {
@@ -135,31 +127,6 @@ html.dark {
 .dark .card h3,
 .dark .facts h2 {
   color: #f4c7d7;
-}
-
-.dark .post-card p,
-.dark .card p,
-.dark .facts li {
-  color: #d0d0d0;
-}
-
-.dark .post-date,
-.dark .post-meta,
-.dark .tagline {
-  color: #b8a0a0;
-}
-
-.dark footer {
-  background: linear-gradient(135deg, #8f4f5f 0%, #6d3d4f 100%);
-  color: #fff;
-}
-
-.dark .highlight-card {
-  background: #1a1050;
-}
-
-.dark .highlight-card:hover {
-  background: #2d1f70;
 }
 
 .dark .tag {
@@ -176,6 +143,7 @@ html.dark {
   color: #fff;
 }
 
-.dark .tag:hover a {
+.dark footer {
+  background: linear-gradient(135deg, #8f4f5f 0%, #6d3d4f 100%);
   color: #fff;
 }
