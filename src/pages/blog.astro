@@ -1,9 +1,12 @@
+---
+const pageTitle = "Mi blog de Astro aprendizaje";
+---
 <!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karen's Universe — Blog</title>
+    <title>{pageTitle}</title>
     <style>
         :root {
             --pink-pastel: #F8DDEB;
@@ -137,7 +140,7 @@
     </nav>
 
     <main>
-        <h1>Mi blog de aprendizaje sobre Astro</h1>
+        <h1>{pageTitle}</h1>
         <p class="subtitle">Aquí es donde publicaré acerca de mi viaje aprendiendo Astro.</p>
 
         <div class="posts-list">

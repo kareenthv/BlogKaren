@@ -1,1036 +1,144 @@
-<!DOCTYPE html>
+---
+const pageTitle = "Sobre mí";
+
+const identity = {
+  firstName: "Karen",
+  country: "México",
+  occupation: "Estudiante en CETI Colomos",
+  hobbies: ["café", "ajedrez", "gatos"],
+};
+
+const loves = [
+  { icon: "🐱", title: "Mis gatos", text: "Michi, Mitsu y Tsuru Udon son mi santuario." },
+  { icon: "☕", title: "Cafeterías", text: "Café humeante, un libro abierto y luz dorada." },
+  { icon: "♟️", title: "Ajedrez", text: "Estrategia, arte y la vida misma en 64 casillas." },
+  { icon: "📖", title: "Historias", text: "Personajes complejos y mitologías reinterpretadas." },
+  { icon: "🎵", title: "Música", text: "BTS, Harry Styles, Elvis y ese misterio sonoro." },
+  { icon: "🎬", title: "Personajes oscuros", text: "Arcane, Ghibli, Naruto: los que tienen grietas." },
+];
+
+const cats = [
+  { emoji: "🐱", name: "Michi", text: "Elegante, observador, siempre sabe qué necesito." },
+  { emoji: "🐈", name: "Mitsu", text: "El travieso, mi caos favorito." },
+  { emoji: "🐈‍⬛", name: "Tsuru Udon", text: "Mi raro precioso, especial." },
+];
+---
+<!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karen's Universe</title>
+    <title>{pageTitle}</title>
     <style>
         :root {
-            --pink-pastel: #F8DDEB;
             --pink-soft: #F4C7D7;
-            --pink-muted: #E8B4C8;
-            --lavender: #E6D5F0;
-            --mint: #D5F0E8;
             --peach: #F5E0D0;
-            --yellow-pastel: #FFF9D9;
-            --cream: #FFF8EE;
-            --beige: #E8D8C3;
-            --brown-soft: #C89F9C;
+            --lavender: #E6D5F0;
             --burgundy: #8F4F5F;
-            --blue-pastel: #AFC6D8;
-            
+            --brown-soft: #C89F9C;
             --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
             --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.08);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #FFF9F5 0%, #F5F0FF 50%, #F0F8F8 100%);
             color: #4a3d3d;
             line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        /* NAVEGACIÓN */
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: fixed; top: 0; left: 0; right: 0;
             background: rgba(255, 248, 238, 0.95);
             backdrop-filter: blur(10px);
             padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+            display: flex; justify-content: center; gap: 2rem;
             z-index: 999;
             box-shadow: var(--shadow-soft);
         }
-
         nav a {
-            text-decoration: none;
-            color: var(--burgundy);
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            text-decoration: none; color: var(--burgundy);
+            font-weight: 500; font-size: 0.95rem;
+            padding: 0.5rem 1rem; border-radius: 20px;
             transition: all 0.3s ease;
-            position: relative;
         }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pink-soft), var(--peach));
-            transition: width 0.3s ease;
+        nav a:hover { background: rgba(248, 221, 235, 0.3); }
+        main { margin-top: 100px; padding: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+        h1 { font-size: 2.6rem; color: var(--burgundy); text-align: center; }
+        .tagline { text-align: center; color: var(--brown-soft); font-style: italic; margin: 0.5rem 0 2.5rem; }
+        .facts {
+            background: white; border-radius: 18px; padding: 1.8rem;
+            box-shadow: var(--shadow-soft); margin-bottom: 3rem;
         }
-
-        nav a:hover {
-            background: rgba(248, 221, 235, 0.3);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 2rem;
-            z-index: 1;
-        }
-
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--burgundy);
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            letter-spacing: -1px;
-            line-height: 1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--brown-soft);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .hero-tagline {
-            font-size: 1rem;
-            color: #6b5555;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            font-style: italic;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-decor {
-            position: absolute;
-            font-size: 2.5rem;
-            opacity: 0.4;
-            animation: float 3s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .decor-1 { top: 10%; left: 5%; animation-delay: 0s; }
-        .decor-2 { top: 15%; right: 8%; animation-delay: 1s; }
-        .decor-3 { bottom: 20%; left: 10%; animation-delay: 0.5s; }
-        .decor-4 { bottom: 15%; right: 10%; animation-delay: 1.5s; }
-        .decor-5 { top: 30%; right: 5%; animation-delay: 0.8s; }
-        .decor-6 { bottom: 25%; left: 20%; animation-delay: 1.2s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 12px 32px;
-            background: linear-gradient(135deg, var(--pink-soft), var(--peach));
-            color: var(--burgundy);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(135deg, var(--burgundy), var(--brown-soft));
-            color: var(--cream);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-med);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            font-size: 1.5rem;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 80px 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
+        .facts h2 { color: var(--burgundy); margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .facts ul { padding-left: 1.2rem; color: #6b5555; }
+        .facts li { margin-bottom: 0.4rem; }
         .section-title {
-            font-size: 2.5rem;
-            color: var(--burgundy);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem; color: var(--burgundy); text-align: center;
+            margin-bottom: 2rem;
         }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--pink-soft), var(--peach), var(--lavender));
-            border-radius: 2px;
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem; margin-bottom: 3rem;
         }
-
-        /* THINGS I LOVE SECTION */
-        .things-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .love-card {
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .love-card:nth-child(1) { background: linear-gradient(135deg, #FFF5F8, #FFE8F0); }
-        .love-card:nth-child(2) { background: linear-gradient(135deg, #FFF9F5, #F5E8E0); }
-        .love-card:nth-child(3) { background: linear-gradient(135deg, #F5F8FF, #E8F0FF); }
-        .love-card:nth-child(4) { background: linear-gradient(135deg, #F8FFF5, #E8FFE8); }
-        .love-card:nth-child(5) { background: linear-gradient(135deg, #FFF8F5, #F5F0FF); }
-        .love-card:nth-child(6) { background: linear-gradient(135deg, #F5F5F8, #E8E8FF); }
-
-        .love-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-med);
-        }
-
-        .love-card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .love-card h3 {
-            font-size: 1.3rem;
-            color: var(--burgundy);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .love-card p {
-            font-size: 0.95rem;
-            color: #6b5555;
-            line-height: 1.7;
-        }
-
-        /* MUSIC SECTION */
-        .music-section {
-            background: linear-gradient(135deg, rgba(230, 213, 240, 0.3), rgba(213, 240, 232, 0.3));
-            border-radius: 30px;
-            padding: 80px 2rem;
-        }
-
-        .vinyl-player {
-            max-width: 400px;
-            margin: 0 auto 3rem;
-            text-align: center;
-        }
-
-        .vinyl {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            background: radial-gradient(circle at 30% 30%, #1a1a1a, #000);
-            border-radius: 50%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset -5px -5px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            animation: spin 4s linear infinite;
-        }
-
-        .vinyl::before {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle at 40% 40%, #f0e68c, #daa520);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .vinyl::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: #1a1a1a;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .music-artists {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .artist-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: var(--shadow-soft);
+        .card {
+            background: white; border-radius: 18px; padding: 1.6rem;
+            text-align: center; box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
-            border: 1px solid rgba(230, 213, 240, 0.3);
         }
-
-        .artist-card:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-med);
-        }
-
-        .artist-card h4 {
-            font-size: 0.95rem;
-            color: var(--burgundy);
-            margin-top: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* BOOKS SECTION */
-        .books-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .book {
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .book:nth-child(1) { background: linear-gradient(135deg, var(--pink-soft), var(--pink-muted)); }
-        .book:nth-child(2) { background: linear-gradient(135deg, var(--lavender), #D9CCF0); }
-        .book:nth-child(3) { background: linear-gradient(135deg, #2a1a1a, #4a3a3a); color: #ddd; }
-        .book:nth-child(4) { background: linear-gradient(135deg, var(--mint), #B8E8E0); }
-        .book:nth-child(5) { background: linear-gradient(135deg, var(--peach), #E8D0C0); }
-        .book:nth-child(6) { background: linear-gradient(135deg, var(--yellow-pastel), #F5F0D9); }
-
-        .book:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-med);
-        }
-
-        .book h4 {
-            font-size: 0.9rem;
-            color: inherit;
-            margin-top: 0.8rem;
-            font-weight: 600;
-        }
-
-        .quote-box {
-            text-align: center;
-            margin: 3rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            border-left: 4px solid var(--pink-soft);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            max-width: 700px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .quote-box:hover {
-            box-shadow: var(--shadow-med);
-            transform: translateX(5px);
-        }
-
-        .quote-text {
-            font-size: 1.1rem;
-            color: var(--burgundy);
-            font-style: italic;
-            min-height: 50px;
-            line-height: 1.8;
-            transition: opacity 0.3s ease;
-        }
-
-        /* CAT SECTION */
-        .cat-section {
-            background: linear-gradient(135deg, rgba(255, 245, 248, 0.8), rgba(245, 248, 255, 0.8));
-            border-radius: 30px;
-            padding: 80px 2rem;
-        }
-
-        .cat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cat-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cat-card:nth-child(1) { border-top: 4px solid var(--pink-soft); }
-        .cat-card:nth-child(2) { border-top: 4px solid var(--peach); }
-        .cat-card:nth-child(3) { border-top: 4px solid var(--blue-pastel); }
-
-        .cat-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-med);
-        }
-
-        .cat-emoji {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cat-card h4 {
-            color: var(--burgundy);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .cat-card p {
-            font-size: 0.9rem;
-            color: #6b5555;
-            line-height: 1.6;
-        }
-
-        /* UNIVERSE SECTION */
-        .universe-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .universe-item {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .universe-item:hover {
-            border-color: var(--pink-soft);
-            transform: scale(1.05);
-            box-shadow: var(--shadow-med);
-        }
-
-        .universe-item span {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.8rem;
-        }
-
-        .universe-item p {
-            font-size: 0.9rem;
-            color: var(--burgundy);
-            font-weight: 500;
-        }
-
-        /* FOOTER */
-        footer {
-            background: linear-gradient(135deg, var(--pink-soft), var(--lavender));
-            color: var(--burgundy);
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        footer p {
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        footer .footer-decor {
-            font-size: 1.2rem;
-            letter-spacing: 1rem;
-            margin-top: 1.5rem;
-            opacity: 0.7;
-        }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: var(--cream);
-            padding: 2.5rem;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: var(--shadow-med);
-            animation: slideIn 0.3s ease;
-        }
-
-        .modal-content h2 {
-            color: var(--burgundy);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .modal-content p {
-            color: #5a4a4a;
-            line-height: 1.8;
-        }
-
-        .close-modal {
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--burgundy);
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-modal:hover {
-            color: var(--pink-muted);
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .heart-trail {
-            position: fixed;
-            pointer-events: none;
-            font-size: 1.2rem;
-            z-index: 999;
-            animation: trailFade 1s ease-out forwards;
-        }
-
-        @keyframes trailFade {
-            from {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(-40px) scale(0.5);
-            }
-        }
-
-        #cursor-cat {
-            position: fixed;
-            pointer-events: none;
-            z-index: 998;
-            font-size: 1.3rem;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                gap: 1rem;
-                padding: 1rem 1.5rem;
-            }
-
-            nav a {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .things-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 60px 1.5rem;
-            }
-        }
+        .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-med); }
+        .card .icon { font-size: 2.3rem; margin-bottom: 0.6rem; }
+        .card h3 { color: var(--burgundy); font-size: 1.05rem; margin-bottom: 0.4rem; }
+        .card p { font-size: 0.88rem; color: #6b5555; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--burgundy); font-style: italic; }
     </style>
 </head>
 <body>
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#amigos">Lo que amo</a>
-        <a href="#musica">Música</a>
-        <a href="#libros">Historias</a>
-        <a href="#gatos">Mis gatos</a>
+        <a href="/">Inicio</a>
+        <a href="/about/">Sobre mí</a>
+        <a href="/blog/">Blog</a>
     </nav>
 
-    <div id="cursor-cat"></div>
+    <main>
+        <h1>{pageTitle}</h1>
+        <p class="tagline">Un pequeño universo entre café, libros, música y gatos.</p>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="inicio">
-        <div class="hero-decor decor-1">✨</div>
-        <div class="hero-decor decor-2">☕</div>
-        <div class="hero-decor decor-3">📚</div>
-        <div class="hero-decor decor-4">🎵</div>
-        <div class="hero-decor decor-5">♟️</div>
-        <div class="hero-decor decor-6">🌸</div>
+        <section class="facts">
+            <h2>Datos sobre mí</h2>
+            <ul>
+                <li>Me llamo {identity.firstName}.</li>
+                <li>Vivo en {identity.country} y soy {identity.occupation}.</li>
+                {identity.hobbies.length >= 2 &&
+                    <li>Dos de mis pasiones son: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
+                }
+            </ul>
+        </section>
 
-        <div class="hero-content">
-            <h1>Karen</h1>
-            <p class="hero-subtitle">pequeño universo personal</p>
-            <p class="hero-tagline">
-                En algún rincón entre las tazas de café, las páginas de libros con historias que me atrapan, la música que me entiende, y tres gatos que son mi razón de sonreír. Así es mi mundo.
-            </p>
-            <button class="cta-button" onclick="smoothScroll('#amigos')">
-                Conoce mi mundo
-            </button>
-        </div>
-
-        <div class="scroll-indicator">↓</div>
-    </section>
-
-    <!-- THINGS I LOVE SECTION -->
-    <section id="amigos">
         <h2 class="section-title">Cosas que amo</h2>
-        <div class="things-grid">
-            <div class="love-card" onclick="openModal('gatos-modal')">
-                <div class="love-card-icon">🐱</div>
-                <h3>Mis gatos</h3>
-                <p>Michi, Mitsu y Tsuru Udon son mi santuario. Cada uno con su propia personalidad, sus manías y su forma de quererme.</p>
-            </div>
-            <div class="love-card" onclick="openModal('cafe-modal')">
-                <div class="love-card-icon">☕</div>
-                <h3>Cafeterías</h3>
-                <p>Ese momento perfecto donde el café humeante, un libro abierto y la luz dorada crean la magia que necesito para pensar.</p>
-            </div>
-            <div class="love-card" onclick="openModal('ajedrez-modal')">
-                <div class="love-card-icon">♟️</div>
-                <h3>Ajedrez</h3>
-                <p>No es solo un juego. Es estrategia, es arte, es la vida misma en forma de 64 casillas. Cada movimiento cuenta.</p>
-            </div>
-            <div class="love-card" onclick="openModal('libros-modal')">
-                <div class="love-card-icon">📖</div>
-                <h3>Historias</h3>
-                <p>Las que me atrapan el alma. Personajes complejos, amores que duelen, mitologías reinterpretadas, psicología del corazón.</p>
-            </div>
-            <div class="love-card" onclick="openModal('musica-modal')">
-                <div class="love-card-icon">🎵</div>
-                <h3>Música</h3>
-                <p>Mi lenguaje secreto. Lo que no puedo decir con palabras lo susurra en notas. BTS, Harry, Elvis, y ese misterio sonoro que me hipnotiza.</p>
-            </div>
-            <div class="love-card" onclick="openModal('anime-modal')">
-                <div class="love-card-icon">🎬</div>
-                <h3>Personajes oscuros</h3>
-                <p>Arcane. Ghibli. Naruto. Los que tienen grietas, los que son más que lo que se ve. Eso es lo que me fascina.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- UNIVERSE SECTION -->
-    <section>
-        <h2 class="section-title">Mi pequeño universo</h2>
-        <div class="universe-grid">
-            <div class="universe-item">
-                <span>📖</span>
-                <p>Historias que enganchen</p>
-            </div>
-            <div class="universe-item">
-                <span>🎬</span>
-                <p>Cinematografía visual</p>
-            </div>
-            <div class="universe-item">
-                <span>🎨</span>
-                <p>Estética de ensueño</p>
-            </div>
-            <div class="universe-item">
-                <span>💭</span>
-                <p>Charlas profundas</p>
-            </div>
-            <div class="universe-item">
-                <span>🌙</span>
-                <p>Lo misterioso y raro</p>
-            </div>
-            <div class="universe-item">
-                <span>🎭</span>
-                <p>Personajes complejos</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- MUSIC SECTION -->
-    <section class="music-section" id="musica">
-        <h2 class="section-title">Rincón de música</h2>
-        <div class="vinyl-player">
-            <div class="vinyl"></div>
-            <p style="color: var(--burgundy); font-weight: 600; margin-bottom: 2rem;">Mi soundtrack</p>
-        </div>
-        
-        <div class="music-artists">
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🎤</span>
-                <h4>BTS</h4>
-            </div>
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🎸</span>
-                <h4>Harry Styles</h4>
-            </div>
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🎤</span>
-                <h4>Elvis</h4>
-            </div>
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🌟</span>
-                <h4>Michael Jackson</h4>
-            </div>
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🎙️</span>
-                <h4>J. Cole</h4>
-            </div>
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🎵</span>
-                <h4>Paulo Londra</h4>
-            </div>
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🎭</span>
-                <h4>Slipknot</h4>
-            </div>
-            <div class="artist-card">
-                <span style="font-size: 1.8rem;">🎻</span>
-                <h4>Instrumental</h4>
-            </div>
-        </div>
-    </section>
-
-    <!-- BOOKS SECTION -->
-    <section id="libros">
-        <h2 class="section-title">Historias & Mitología</h2>
-        <div class="books-container">
-            <div class="book" onclick="showEaster('achilles')">
-                <span style="font-size: 2rem;">📕</span>
-                <h4>La Canción de Aquiles</h4>
-            </div>
-            <div class="book">
-                <span style="font-size: 2rem;">📗</span>
-                <h4>Ennead</h4>
-            </div>
-            <div class="book">
-                <span style="font-size: 2rem;">📕</span>
-                <h4>Berserk</h4>
-            </div>
-            <div class="book">
-                <span style="font-size: 2rem;">📘</span>
-                <h4>Mitología Egipcia</h4>
-            </div>
-            <div class="book">
-                <span style="font-size: 2rem;">📙</span>
-                <h4>BL & Romance</h4>
-            </div>
-            <div class="book">
-                <span style="font-size: 2rem;">📕</span>
-                <h4>Psicología del alma</h4>
-            </div>
+        <div class="grid">
+            {loves.map((item) => (
+                <div class="card">
+                    <div class="icon">{item.icon}</div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                </div>
+            ))}
         </div>
 
-        <div class="quote-box" onclick="rotateQuote()">
-            <p class="quote-text" id="quote-display">"Un personaje complicado es un libro que nunca termino de leer"</p>
+        <h2 class="section-title">Mis gatos</h2>
+        <div class="grid">
+            {cats.map((cat) => (
+                <div class="card">
+                    <div class="icon">{cat.emoji}</div>
+                    <h3>{cat.name}</h3>
+                    <p>{cat.text}</p>
+                </div>
+            ))}
         </div>
-    </section>
+    </main>
 
-    <!-- CAT SECTION -->
-    <section class="cat-section" id="gatos">
-        <h2 class="section-title">Cat Café</h2>
-        <p style="text-align: center; color: var(--burgundy); margin-bottom: 2rem; font-size: 1rem;">
-            Mi lugar feliz: gatos + luz cálida + silencio perfecto
-        </p>
-        <div class="cat-grid">
-            <div class="cat-card">
-                <div class="cat-emoji">🐱</div>
-                <h4>Michi</h4>
-                <p>Mi gato más bonito. Elegante, observador, siempre sabe qué necesito.</p>
-            </div>
-            <div class="cat-card">
-                <div class="cat-emoji">🐈</div>
-                <h4>Mitsubishi (Mitsu)</h4>
-                <p>El travieso, el que me trae sorpresas a las 3 de la mañana. Mi caos favorito.</p>
-            </div>
-            <div class="cat-card">
-                <div class="cat-emoji">🐈‍⬛</div>
-                <h4>Tsuru Udon</h4>
-                <p>Mi raro precioso. Diferente, especial, el que nadie más entiende como yo.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
-        <p>En algún lugar entre el café y los libros, el ajedrez y la música,</p>
-        <p>existe un pequeño universo que es completamente, perfectamente mío.</p>
-        <div class="footer-decor">
-            ☕ 📚 🎵 ♟️
-        </div>
+        <p>☕ 📚 🎵 ♟️</p>
     </footer>
-
-    <!-- MODALS -->
-    <div id="gatos-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('gatos-modal')">&times;</span>
-            <h2>Michi, Mitsu y Tsuru</h2>
-            <p>Son mi santuario. Cada uno tiene su propia magia: Michi con su elegancia silenciosa, Mitsu con su energía caótica, Tsuru con su rareza que solo yo entiendo. No sé qué haría sin ellos.</p>
-        </div>
-    </div>
-
-    <div id="cafe-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('cafe-modal')">&times;</span>
-            <h2>El ritual del café</h2>
-            <p>Es donde me encuentro. Esa mesa pequeña en la esquina, una taza cálida entre mis manos, un libro abierto. La luz cálida colándose por la ventana. Es ahí donde pienso, donde escritura, donde simplemente existo sin tener que explicar nada.</p>
-        </div>
-    </div>
-
-    <div id="ajedrez-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('ajedrez-modal')">&times;</span>
-            <h2>El juego de la vida</h2>
-            <p>El ajedrez no es solo un juego para mí. Es estrategia, es arte en movimiento, es la vida misma comprimida en 64 casillas. Cada pieza tiene valor, cada movimiento tiene peso. Eso es hermoso.</p>
-        </div>
-    </div>
-
-    <div id="libros-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('libros-modal')">&times;</span>
-            <h2>Historias que atrapan el alma</h2>
-            <p>No me interesan historias simples. Quiero personajes rotos, amores que duelen de verdad, psicología del corazón humano. "La Canción de Aquiles" lo entiende. Ennead lo entiende. Son mis compañeros de insomnio.</p>
-        </div>
-    </div>
-
-    <div id="musica-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('musica-modal')">&times;</span>
-            <h2>Mi lenguaje</h2>
-            <p>La música es la voz de lo que no puedo decir con palabras. BTS me acompañó en momentos que importan. Harry Styles es poesía. Hay un misterio sonoro en ciertos artistas que me hipnotiza. La música es lo más importante.</p>
-        </div>
-    </div>
-
-    <div id="anime-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('anime-modal')">&times;</span>
-            <h2>Personajes que rompen esquemas</h2>
-            <p>Arcane porque cada personaje es gris, no hay blanco ni negro. Ghibli porque la belleza existe en lo mágico y lo roto. Naruto porque los personajes "villanos" resultan ser los más interesantes. Eso es lo que me fascina.</p>
-        </div>
-    </div>
-
-    <script>
-        // MODALES
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('show');
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('show');
-            }
-        }
-
-        // SMOOTH SCROLL
-        function smoothScroll(target) {
-            document.querySelector(target).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
-        // EASTER EGGS
-        function showEaster(type) {
-            if (type === 'achilles') {
-                alert('"La Canción de Aquiles" es el libro que vive en mi corazón. Patroclus y Aquiles me enseñaron qué es amar sin filtros.');
-            }
-        }
-
-        // CITAS ROTATIVAS
-        const quotes = [
-            '"Un personaje complicado es un libro que nunca termino de leer"',
-            '"Un café, un libro y silencio. Eso es lo más cercano a la felicidad"',
-            '"La música es la voz de lo que no puedo decir con palabras"',
-            '"Michi, Mitsu y Tsuru son mis razones para seguir"',
-            '"Introvertida, pero con un universo infinito adentro"',
-            '"Creo en los personajes rotos, en los amores que duelen, en las historias raras"',
-            '"El ajedrez es vida comprimida en 64 casillas"',
-            '"Ghibli entiende lo mágico. Arcane entiende lo gris. Naruto entiende lo complejo"'
-        ];
-
-        let currentQuoteIndex = 0;
-
-        function rotateQuote() {
-            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-            const quoteDisplay = document.getElementById('quote-display');
-            quoteDisplay.style.opacity = '0';
-            setTimeout(() => {
-                quoteDisplay.textContent = quotes[currentQuoteIndex];
-                quoteDisplay.style.opacity = '1';
-            }, 150);
-        }
-
-        // CORAZONES AL CLICKEAR
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName !== 'A') {
-                createHeart(e.pageX, e.pageY);
-            }
-        });
-
-        function createHeart(x, y) {
-            const heart = document.createElement('div');
-            heart.className = 'heart-trail';
-            heart.innerHTML = '💗';
-            heart.style.left = x + 'px';
-            heart.style.top = y + 'px';
-            document.body.appendChild(heart);
-
-            setTimeout(() => heart.remove(), 1000);
-        }
-
-        // GATITO QUE SIGUE EL CURSOR
-        let lastX = 0, lastY = 0;
-        const cursorCat = document.getElementById('cursor-cat');
-        const cats = ['🐱', '😸', '😻'];
-        let catIndex = 0;
-
-        document.addEventListener('mousemove', function(e) {
-            if (Math.abs(e.clientX - lastX) > 30 || Math.abs(e.clientY - lastY) > 30) {
-                cursorCat.style.left = e.clientX + 'px';
-                cursorCat.style.top = e.clientY + 'px';
-                cursorCat.textContent = cats[catIndex % cats.length];
-                catIndex++;
-                lastX = e.clientX;
-                lastY = e.clientY;
-            }
-        });
-    </script>
 </body>
 </html>
