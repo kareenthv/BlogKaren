@@ -77,24 +77,34 @@ const { frontmatter } = Astro.props;
             margin-bottom: 0.8rem;
         }
 
-        :global(main > ul),
-        :global(main > ol) {
-            margin-left: 1.5rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.8;
-        }
-
-        :global(main > li) {
-            margin-bottom: 0.5rem;
-            color: #4a3d3d;
-        }
-
-        :global(main > blockquote) {
-            border-left: 4px solid var(--pink-soft);
-            padding-left: 1.5rem;
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
             margin: 2rem 0;
-            color: var(--brown-soft);
-            font-style: italic;
+        }
+
+        .tag {
+            border: 2px solid var(--pink-soft);
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .tag a {
+            text-decoration: none;
+            color: var(--burgundy);
+            font-weight: 500;
+        }
+
+        .tag:hover {
+            background: var(--pink-soft);
+        }
+
+        .tag:hover a {
+            color: white;
         }
     </style>
 </head>
@@ -105,13 +115,9 @@ const { frontmatter } = Astro.props;
         <h1>{frontmatter.title}</h1>
         
         <div class="post-meta">
-            <p>Publicado: {frontmatter.pubDate.toString().slice(0,10)}</p>
+            <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
             <p>Por: {frontmatter.author}</p>
         </div>
-
-        {frontmatter.image && (
-            <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="post-image" width="600" />
-        )}
 
         {frontmatter.description && (
             <p style="font-style: italic; color: var(--brown-soft); margin-bottom: 2rem;">
@@ -119,7 +125,19 @@ const { frontmatter } = Astro.props;
             </p>
         )}
 
+        {frontmatter.image && (
+            <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="post-image" width="600" />
+        )}
+
         <slot />
+
+        {frontmatter.tags && (
+            <div class="tags">
+                {frontmatter.tags.map((tag: string) => (
+                    <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+                ))}
+            </div>
+        )}
     </main>
 
     <Footer />

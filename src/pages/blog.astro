@@ -3,15 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Mi blog de Astro aprendizaje";
 
-// Obtener todos los posts
-const allPosts = import.meta.glob('../pages/posts/*.md', { eager: true });
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 
-const posts = Object.values(allPosts)
-  .map((post) => ({
-    frontmatter: post.frontmatter,
-    slug: post.file.split('/').pop().replace('.md', ''),
-  }))
-  .sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
+const sortedPosts = allPosts.sort((a: any, b: any) => 
+  new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate)
+);
 ---
 <BaseLayout pageTitle={pageTitle}>
     <style>
@@ -53,12 +49,12 @@ const posts = Object.values(allPosts)
         .post-card p {
             font-size: 0.9rem;
             color: #6b5555;
+            margin-bottom: 0.5rem;
         }
 
         .post-date {
             font-size: 0.85rem;
             color: var(--brown-soft);
-            margin-top: 0.5rem;
             font-style: italic;
         }
     </style>
@@ -66,8 +62,8 @@ const posts = Object.values(allPosts)
     <p class="subtitle">Aquí es donde publico acerca de mi viaje aprendiendo Astro.</p>
 
     <div class="posts-list">
-        {posts.map((post) => (
-            <a href={`/posts/${post.slug}/`} class="post-card">
+        {sortedPosts.map((post: any) => (
+            <a href={post.url} class="post-card">
                 <h3>{post.frontmatter.title}</h3>
                 <p>{post.frontmatter.description}</p>
                 <div class="post-date">{post.frontmatter.pubDate.toString().slice(0,10)}</div>

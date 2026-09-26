@@ -1,8 +1,13 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
 <nav>
-    <div id="main-menu" class="nav-links">
-        <a href="/">Inicio</a>
-        <a href="/about/">Sobre mí</a>
-        <a href="/blog/">Blog</a>
+    <div class="nav-links">
+        <a href="/" class={currentPath === '/' ? 'active' : ''}>Inicio</a>
+        <a href="/about/" class={currentPath === '/about/' ? 'active' : ''}>Sobre mí</a>
+        <a href="/blog/" class={currentPath === '/blog/' ? 'active' : ''}>Blog</a>
+        <a href="/tags/" class={currentPath === '/tags/' ? 'active' : ''}>Etiquetas</a>
     </div>
 </nav>
 
@@ -17,5 +22,29 @@
         padding: 1.2rem 2rem;
         z-index: 999;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--burgundy, #8f4f5f);
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        background: rgba(248, 221, 235, 0.3);
+    }
+
+    .nav-links a.active {
+        background: #F4C7D7;
+        font-weight: 600;
     }
 </style>
