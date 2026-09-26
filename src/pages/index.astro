@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Greeting from '../components/Greeting';
 
 const pageTitle = "Página de inicio";
 ---
@@ -218,6 +219,8 @@ const pageTitle = "Página de inicio";
         <div class="scroll-indicator">↓</div>
     </section>
 
+    <Greeting client:load messages={["Hola", "Qué tal", "Bienvenido", "Hej", "Hallo"]} />
+
     <section class="highlights">
         <h2 class="section-title">Explora mi sitio</h2>
         <div class="highlight-grid">
@@ -230,6 +233,11 @@ const pageTitle = "Página de inicio";
                 <div class="highlight-icon">📝</div>
                 <h3>Blog</h3>
                 <p>Aquí voy dejando lo que aprendo por el camino.</p>
+            </a>
+            <a href="/tags/" class="highlight-card">
+                <div class="highlight-icon">🏷️</div>
+                <h3>Etiquetas</h3>
+                <p>Explora mis posts por categoría.</p>
             </a>
         </div>
     </section>
