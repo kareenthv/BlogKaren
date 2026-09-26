@@ -3,13 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Mi blog de Astro aprendizaje";
 
-// Obtener todos los posts del blog
-const posts = await Astro.glob('../pages/posts/*.md');
+// Obtener todos los posts
+const allPosts = import.meta.glob('../pages/posts/*.md', { eager: true });
 
-// Ordenarlos por fecha (más recientes primero)
-const sortedPosts = posts.sort((a, b) => 
-  new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate)
-);
+const posts = Object.values(allPosts)
+  .map((post) => ({
+    frontmatter: post.frontmatter,
+    slug: post.file.split('/').pop().replace('.md', ''),
+  }))
+  .sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
 ---
 <BaseLayout pageTitle={pageTitle}>
     <style>
@@ -59,28 +61,17 @@ const sortedPosts = posts.sort((a, b) =>
             margin-top: 0.5rem;
             font-style: italic;
         }
-
-        .no-posts {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--brown-soft);
-            font-style: italic;
-        }
     </style>
 
     <p class="subtitle">Aquí es donde publico acerca de mi viaje aprendiendo Astro.</p>
 
     <div class="posts-list">
-        {sortedPosts.length > 0 ? (
-            sortedPosts.map((post) => (
-                <a href={post.url} class="post-card">
-                    <h3>{post.frontmatter.title}</h3>
-                    <p>{post.frontmatter.description}</p>
-                    <div class="post-date">{post.frontmatter.pubDate.toString().slice(0,10)}</div>
-                </a>
-            ))
-        ) : (
-            <p class="no-posts">Aún no hay publicaciones...</p>
-        )}
+        {posts.map((post) => (
+            <a href={`/posts/${post.slug}/`} class="post-card">
+                <h3>{post.frontmatter.title}</h3>
+                <p>{post.frontmatter.description}</p>
+                <div class="post-date">{post.frontmatter.pubDate.toString().slice(0,10)}</div>
+            </a>
+        ))}
     </div>
 </BaseLayout>
