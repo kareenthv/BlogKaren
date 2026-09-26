@@ -1,0 +1,43 @@
+---
+import Social from './Social.astro';
+---
+<footer>
+    <p>En algún lugar entre el café y los libros, el ajedrez y la música,</p>
+    <p>existe un pequeño universo que es completamente, perfectamente mío.</p>
+    <div class="socials">
+        <Social platform="instagram" username="tu_usuario" />
+        <Social platform="github" username="tu_usuario" />
+        <Social platform="tiktok" username="tu_usuario" />
+    </div>
+    <div class="footer-decor">☕ 📚 🎵 ♟️</div>
+</footer>
+
+<style>
+    footer {
+        text-align: center;
+        padding: 3rem 2rem;
+        color: var(--burgundy);
+    }
+
+    footer p {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    .socials {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        flex-wrap: wrap;
+    }
+
+    .footer-decor {
+        font-size: 1.2rem;
+        letter-spacing: 1rem;
+        margin-top: 1rem;
+        opacity: 0.7;
+    }
+</style>
