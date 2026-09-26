@@ -1,18 +1,155 @@
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width" />
-    <title>Astro</title>
-  </head>
-  <body>
-    <a href="/">Inicio</a>
-    <a href="/about/">Sobre mi</a>
-    <a href="/blog/">blog</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karen's Universe — Blog</title>
+    <style>
+        :root {
+            --pink-pastel: #F8DDEB;
+            --pink-soft: #F4C7D7;
+            --pink-muted: #E8B4C8;
+            --lavender: #E6D5F0;
+            --mint: #D5F0E8;
+            --peach: #F5E0D0;
+            --cream: #FFF8EE;
+            --brown-soft: #C89F9C;
+            --burgundy: #8F4F5F;
 
-    <h1>Mi blog de aprendizaje sobre Astro</h1>
-    <p>Aquí es donde publicaré acerca de mi viaje aprendiendo Astro./p>
-    <ul>
-      <li><a href="/posts/">Publicación 1</a></li>
-    </ul>
-  </body>
+            --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFF9F5 0%, #F5F0FF 50%, #F0F8F8 100%);
+            color: #4a3d3d;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 248, 238, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 999;
+            box-shadow: var(--shadow-soft);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--burgundy);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(248, 221, 235, 0.3);
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: var(--burgundy);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--brown-soft);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+
+        .posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .post-card {
+            display: block;
+            background: white;
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--pink-soft);
+        }
+
+        .post-card:hover {
+            transform: translateX(6px);
+            box-shadow: var(--shadow-med);
+        }
+
+        .post-card h3 {
+            color: var(--burgundy);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .post-card p {
+            font-size: 0.9rem;
+            color: #6b5555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--burgundy);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/about/">Sobre mí</a>
+        <a href="/blog/">Blog</a>
+    </nav>
+
+    <main>
+        <h1>Mi blog de aprendizaje sobre Astro</h1>
+        <p class="subtitle">Aquí es donde publicaré acerca de mi viaje aprendiendo Astro.</p>
+
+        <div class="posts-list">
+            <a href="/posts/post-1/" class="post-card">
+                <h3>Publicación 1</h3>
+                <p>Lo que pienso de Astro después de terminar el tutorial: me encantó.</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>☕ 📚 🎵 ♟️</p>
+    </footer>
+</body>
 </html>
