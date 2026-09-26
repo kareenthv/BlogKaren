@@ -16,3 +16,38 @@ h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
 }
+
+/* estilos de la barra de navegación */
+.nav-links {
+  width: 100%;
+  margin: 0;
+}
+.nav-links a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--burgundy, #8f4f5f);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: rgba(248, 221, 235, 0.5);
+}
+
+@media screen and (min-width: 636px) {
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: auto;
+    background: none;
+  }
+  .nav-links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+  }
+}
