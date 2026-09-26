@@ -26,6 +26,11 @@ const cats = [
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skills = ["HTML", "CSS", "JavaScript", "Java", "Android Studio", "Firebase", "Astro"];
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 <!doctype html>
 <html lang="es">
@@ -33,7 +38,7 @@ const goal = 3;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{pageTitle}</title>
-    <style>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
         :root {
             --pink-soft: #F4C7D7;
             --peach: #F5E0D0;
@@ -94,6 +99,11 @@ const goal = 3;
         .card h3 { color: var(--burgundy); font-size: 1.05rem; margin-bottom: 0.4rem; }
         .card p { font-size: 0.88rem; color: #6b5555; }
         footer { text-align: center; padding: 3rem 2rem; color: var(--burgundy); font-style: italic; }
+        .skill {
+            color: var(--skillColor);
+            font-weight: var(--fontWeight);
+            text-transform: var(--textCase);
+        }
     </style>
 </head>
 <body>
@@ -143,6 +153,13 @@ const goal = 3;
                 </div>
             ))}
         </div>
+
+        <section class="facts">
+            <h2>Mis habilidades</h2>
+            <ul>
+                {skills.map((skill) => <li class="skill">{skill}</li>)}
+            </ul>
+        </section>
     </main>
 
     <footer>
