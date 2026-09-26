@@ -17,7 +17,7 @@ La neta quiero hablar con mis propias palabras de lo que me pareció Astro, porq
 
 ## Lo que pienso de Astro
 
-Astro me pareció muy chido. En general me gustó muchísimo porque es súper intuitivo, y el tutorial todo que verrrtzzz. La neta me encantó esto.
+Astro me pareció muy chido. En general me gustó muchísimo porque es súper intuitivo, y el tutorial todo que verrrtzzz. La neta me encantó este pedo, de verdad prof, me devolvio mi inspiracion programadora. neta gracias por esto y por todo.
 
 Lo que más amo es que te explican como si fueras un niño de 5 años. Yo tengo pendejismo agudo y me encanta que me expliquen paso por paso, eso es lo mejor del mundo.
 
@@ -29,4 +29,4 @@ Lo que más amo es que te explican como si fueras un niño de 5 años. Yo tengo 
 
 ## Próximos pasos
 
-Voy a terminar el tutorial y seguir subiendo más publicaciones aquí. Sigan al pendiente porque viene más.
+Voy a terminar el tutorial y seguir subiendo más publicaciones aquí xd. Siga al pendiente porque viene más.
