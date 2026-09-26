@@ -1,0 +1,80 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const { pageTitle } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{pageTitle}</title>
+    <style>
+        :root {
+            --pink-pastel: #F8DDEB;
+            --pink-soft: #F4C7D7;
+            --pink-muted: #E8B4C8;
+            --lavender: #E6D5F0;
+            --mint: #D5F0E8;
+            --peach: #F5E0D0;
+            --cream: #FFF8EE;
+            --brown-soft: #C89F9C;
+            --burgundy: #8F4F5F;
+
+            --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            max-width: none;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFF9F5 0%, #F5F0FF 50%, #F0F8F8 100%);
+            color: #4a3d3d;
+            line-height: 1.6;
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            color: var(--burgundy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <Header />
+
+    <main>
+        <h1>{pageTitle}</h1>
+        <slot />
+    </main>
+
+    <Footer />
+    <script>
+        import "../scripts/menu.js";
+    </script>
+</body>
+</html>

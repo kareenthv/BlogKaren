@@ -1,7 +1,5 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Sobre mí";
 
@@ -36,139 +34,132 @@ const skillColor = "crimson";
 const fontWeight = "bold";
 const textCase = "uppercase";
 ---
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{pageTitle}</title>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
-        :root {
-            --pink-soft: #F4C7D7;
-            --peach: #F5E0D0;
-            --lavender: #E6D5F0;
-            --burgundy: #8F4F5F;
-            --brown-soft: #C89F9C;
-            --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
-            --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.08);
+<BaseLayout pageTitle={pageTitle}>
+    <style is:global define:vars={{skillColor, fontWeight, textCase}}>
+        .tagline {
+            text-align: center;
+            color: var(--brown-soft);
+            font-style: italic;
+            margin: 0.5rem 0 2.5rem;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            margin: 0;
-            width: 100%;
-            max-width: none;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #FFF9F5 0%, #F5F0FF 50%, #F0F8F8 100%);
-            color: #4a3d3d;
-            line-height: 1.6;
-        }
-        nav {
-            position: fixed; top: 0; left: 0; right: 0;
-            background: rgba(255, 248, 238, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 2rem;
-            display: flex; justify-content: center; gap: 2rem;
-            z-index: 999;
-            box-shadow: var(--shadow-soft);
-        }
-        nav a {
-            text-decoration: none; color: var(--burgundy);
-            font-weight: 500; font-size: 0.95rem;
-            padding: 0.5rem 1rem; border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-        nav a:hover { background: rgba(248, 221, 235, 0.3); }
-        main { margin-top: 100px; padding: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; }
-        h1 { font-size: 2.6rem; color: var(--burgundy); text-align: center; }
-        .tagline { text-align: center; color: var(--brown-soft); font-style: italic; margin: 0.5rem 0 2.5rem; }
+
         .facts {
-            background: white; border-radius: 18px; padding: 1.8rem;
-            box-shadow: var(--shadow-soft); margin-bottom: 3rem;
+            background: white;
+            border-radius: 18px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 3rem;
         }
-        .facts h2 { color: var(--burgundy); margin-bottom: 0.8rem; font-size: 1.2rem; }
-        .facts ul { padding-left: 1.2rem; color: #6b5555; }
-        .facts li { margin-bottom: 0.4rem; }
+
+        .facts h2 {
+            color: var(--burgundy);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .facts ul {
+            padding-left: 1.2rem;
+            color: #6b5555;
+        }
+
+        .facts li {
+            margin-bottom: 0.4rem;
+        }
+
         .section-title {
-            font-size: 1.8rem; color: var(--burgundy); text-align: center;
+            font-size: 1.8rem;
+            color: var(--burgundy);
+            text-align: center;
             margin-bottom: 2rem;
         }
+
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem; margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
+
         .card {
-            background: white; border-radius: 18px; padding: 1.6rem;
-            text-align: center; box-shadow: var(--shadow-soft);
+            background: white;
+            border-radius: 18px;
+            padding: 1.6rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
         }
-        .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-med); }
-        .card .icon { font-size: 2.3rem; margin-bottom: 0.6rem; }
-        .card h3 { color: var(--burgundy); font-size: 1.05rem; margin-bottom: 0.4rem; }
-        .card p { font-size: 0.88rem; color: #6b5555; }
-        footer { text-align: center; padding: 3rem 2rem; color: var(--burgundy); font-style: italic; }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-med);
+        }
+
+        .card .icon {
+            font-size: 2.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card h3 {
+            color: var(--burgundy);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: #6b5555;
+        }
+
         .skill {
             color: var(--skillColor);
             font-weight: var(--fontWeight);
             text-transform: var(--textCase);
         }
     </style>
-</head>
-<body>
-    <Header />
 
-    <main>
-        <h1>{pageTitle}</h1>
-        <p class="tagline">Un pequeño universo entre café, libros, música y gatos.</p>
+    <p class="tagline">Un pequeño universo entre café, libros, música y gatos.</p>
 
-        <section class="facts">
-            <h2>Datos sobre mí</h2>
-            <ul>
-                <li>Me llamo {identity.firstName}.</li>
-                <li>Vivo en {identity.country} y soy {identity.occupation}.</li>
-                {identity.hobbies.length >= 2 &&
-                    <li>Dos de mis pasiones son: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
-                }
-            </ul>
-        </section>
+    <section class="facts">
+        <h2>Datos sobre mí</h2>
+        <ul>
+            <li>Me llamo {identity.firstName}.</li>
+            <li>Vivo en {identity.country} y soy {identity.occupation}.</li>
+            {identity.hobbies.length >= 2 &&
+                <li>Dos de mis pasiones son: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
+            }
+        </ul>
+    </section>
 
-        {happy && <p class="tagline">¡Estoy feliz de aprender Astro!</p>}
-        {finished && <p class="tagline">¡Ya terminé este tutorial!</p>}
-        {goal === 3 ? <p class="tagline">Mi meta es terminarlo en 3 días.</p> : <p class="tagline">Mi meta no son 3 días.</p>}
+    {happy && <p class="tagline">¡Estoy feliz de aprender Astro!</p>}
+    {finished && <p class="tagline">¡Ya terminé este tutorial!</p>}
+    {goal === 3 ? <p class="tagline">Mi meta es terminarlo en 3 días.</p> : <p class="tagline">Mi meta no son 3 días.</p>}
 
-        <h2 class="section-title">Cosas que amo</h2>
-        <div class="grid">
-            {loves.map((item) => (
-                <div class="card">
-                    <div class="icon">{item.icon}</div>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                </div>
-            ))}
-        </div>
+    <h2 class="section-title">Cosas que amo</h2>
+    <div class="grid">
+        {loves.map((item) => (
+            <div class="card">
+                <div class="icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+            </div>
+        ))}
+    </div>
 
-        <h2 class="section-title">Mis gatos</h2>
-        <div class="grid">
-            {cats.map((cat) => (
-                <div class="card">
-                    <div class="icon">{cat.emoji}</div>
-                    <h3>{cat.name}</h3>
-                    <p>{cat.text}</p>
-                </div>
-            ))}
-        </div>
+    <h2 class="section-title">Mis gatos</h2>
+    <div class="grid">
+        {cats.map((cat) => (
+            <div class="card">
+                <div class="icon">{cat.emoji}</div>
+                <h3>{cat.name}</h3>
+                <p>{cat.text}</p>
+            </div>
+        ))}
+    </div>
 
-        <section class="facts">
-            <h2>Mis habilidades</h2>
-            <ul>
-                {skills.map((skill) => <li class="skill">{skill}</li>)}
-            </ul>
-        </section>
-    </main>
-
-    <Footer />
-     <script>
-    import "../scripts/menu.js";
-  </script>
-</body>
-</html>
+    <section class="facts">
+        <h2>Mis habilidades</h2>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+    </section>
+</BaseLayout>

@@ -1,16 +1,9 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Página de inicio";
 ---
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{pageTitle}</title>
+<BaseLayout pageTitle={pageTitle}>
     <style>
         :root {
             --pink-pastel: #F8DDEB;
@@ -30,78 +23,8 @@ const pageTitle = "Página de inicio";
             --shadow-med: 0 12px 32px rgba(0, 0, 0, 0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-            width: 100%;
-            max-width: none;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #FFF9F5 0%, #F5F0FF 50%, #F0F8F8 100%);
-            color: #4a3d3d;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* NAVEGACIÓN */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 248, 238, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            z-index: 999;
-            box-shadow: var(--shadow-soft);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--burgundy);
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pink-soft), var(--peach));
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            background: rgba(248, 221, 235, 0.3);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* HERO SECTION */
         .hero {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
+            min-height: calc(100vh - 180px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -119,16 +42,7 @@ const pageTitle = "Página de inicio";
             animation: fadeInUp 1s ease-out;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--burgundy);
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            letter-spacing: -1px;
-            line-height: 1;
-        }
-
-        .hero-subtitle {
+        .hero h2 {
             font-size: 1.3rem;
             color: var(--brown-soft);
             margin-bottom: 1.5rem;
@@ -217,6 +131,8 @@ const pageTitle = "Página de inicio";
 
         .highlights {
             padding: 60px 2rem 80px;
+            margin-left: -2rem;
+            margin-right: -2rem;
         }
 
         .section-title {
@@ -281,56 +197,9 @@ const pageTitle = "Página de inicio";
             font-size: 0.9rem;
             color: #6b5555;
         }
-
-        footer {
-            background: linear-gradient(135deg, var(--pink-soft), var(--lavender));
-            color: var(--burgundy);
-            text-align: center;
-            padding: 3rem 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        footer p {
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        footer .footer-decor {
-            font-size: 1.2rem;
-            letter-spacing: 1rem;
-            margin-top: 1.5rem;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                gap: 1rem;
-                padding: 1rem 1.5rem;
-            }
-
-            nav a {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
     </style>
-</head>
-<body>
-    <Header />
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="inicio">
+    <section class="hero">
         <div class="hero-decor decor-1">✨</div>
         <div class="hero-decor decor-2">☕</div>
         <div class="hero-decor decor-3">📚</div>
@@ -339,8 +208,7 @@ const pageTitle = "Página de inicio";
         <div class="hero-decor decor-6">🌸</div>
 
         <div class="hero-content">
-            <h1>Karen</h1>
-            <p class="hero-subtitle">pequeño universo personal</p>
+            <h2>pequeño universo personal</h2>
             <p class="hero-tagline">
                 En algún rincón entre las tazas de café, las páginas de libros con historias que me atrapan, la música que me entiende, y tres gatos que son mi razón de sonreír. Así es mi mundo.
             </p>
@@ -350,7 +218,6 @@ const pageTitle = "Página de inicio";
         <div class="scroll-indicator">↓</div>
     </section>
 
-    <!-- PREVIEW DE SECCIONES -->
     <section class="highlights">
         <h2 class="section-title">Explora mi sitio</h2>
         <div class="highlight-grid">
@@ -366,11 +233,4 @@ const pageTitle = "Página de inicio";
             </a>
         </div>
     </section>
-
-    <!-- FOOTER -->
-    <Footer />
-     <script>
-    import "../scripts/menu.js";
-  </script>
-</body>
-</html>
+</BaseLayout>
