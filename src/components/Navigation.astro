@@ -20,6 +20,9 @@ const currentPath = Astro.url.pathname;
         background: rgba(255, 248, 238, 0.95);
         backdrop-filter: blur(10px);
         padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
         z-index: 999;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
@@ -34,17 +37,54 @@ const currentPath = Astro.url.pathname;
         text-decoration: none;
         color: var(--burgundy, #8f4f5f);
         font-weight: 500;
+        font-size: 0.95rem;
         padding: 0.5rem 1rem;
         border-radius: 20px;
         transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #F4C7D7, #F5E0D0);
+        transition: width 0.3s ease;
     }
 
     .nav-links a:hover {
         background: rgba(248, 221, 235, 0.3);
     }
 
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
     .nav-links a.active {
         background: #F4C7D7;
         font-weight: 600;
+    }
+
+    :global(.dark) .nav-links a {
+        color: #F4C7D7;
+    }
+
+    :global(.dark) .nav-links a:hover {
+        background: rgba(244, 199, 215, 0.2);
+        color: #fff;
+    }
+
+    :global(.dark) .nav-links a.active {
+        background: #8F4F5F;
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            display: none;
+        }
     }
 </style>
